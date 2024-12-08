@@ -1,0 +1,183 @@
+{question && questionType === "multiple choice" && 
+                <>
+                
+
+                <div className="form-group row ms-5 mb-4 mt-2">
+                    <label htmlFor="wd-description" className="col-form-label"><strong>Choices</strong></label>
+                    {possibleAnswers && possibleAnswers.map((choice: string, index: number) => (
+                        <div className="d-flex align-items-center mt-4">
+                            <input type="radio" name="multiple-choice" value={choice} checked={correctAnswer === choice} 
+                            onChange={(e) => setCorrectAnswer(e.target.value)}/>
+                            <label htmlFor={`choice-${index}`} className="col-form-label ms-4"><strong>Possible Choice</strong></label>
+                            <input id={`choice-${index}`} className="form-control ms-2 w-25" value={choice} 
+                            onChange={(e) => {
+                                const updatedAnswers = [...possibleAnswers];
+                                updatedAnswers[index] = e.target.value;
+                                setPossibleAnswers(updatedAnswers);
+                            }}/>
+                            <a className="btn text-danger"
+                            onClick={() => {
+                                const updatedAnswers = possibleAnswers.filter((_:string, i: number) => i !== index);
+                                setPossibleAnswers(updatedAnswers);
+                                if (correctAnswer === choice) {
+                                    setCorrectAnswer("");
+                                }
+                            }}>Remove</a>
+                        </div>
+                    ))}
+
+                    <div>
+                    <a className="btn btn-link text-danger mt-4"
+                    onClick={addNewAnswer}>+ Add Another Choice</a>
+                    </div>
+
+                    <div>
+                        <br /><br />
+                        <a className="btn btn-secondary me-3">Cancel</a>
+                        <a className="btn btn-warning me-3" onClick={updateAQuestion}>Update Question</a>
+                        <a className="btn btn-danger" onClick={deleteAQuestion}>Remove Question</a>
+                    </div>
+                 
+                </div>
+                </form>
+                
+                </>
+                
+                }
+
+                {question && questionType === "true or false" && 
+
+                <>
+                <form>
+                <div className="form-group row ms-5 mb-4 mt-2">
+                <div className="d-flex align-items-center">
+                    <label htmlFor="wd-name" className="col-form-label"><strong>Question Type</strong></label>
+                    <select className="form-select ms-2 w-25" id="wd-question-type" value={questionType}
+                    onChange={(e) => setQuestionType(e.target.value)}>
+                        {questionTypes.map((type) => (
+                            question.type === type ? <option selected value={type}>{type}</option> :
+                            <option value={type}>{type}</option>
+                        ))}
+                    </select>
+                    <label htmlFor="wd-question-point" className="col-form-label ms-4"><strong>Points</strong></label>
+                    <input id="wd-points" className="form-control ms-2 w-25" value={points} 
+                    onChange={(e)=>{setPoints(e.target.value)}}/>
+                </div>
+                </div>
+
+                <div className="form-group row ms-5 mb-4 mt-2">
+                    <label htmlFor="wd-description" className="col-form-label">
+                    <strong>Description</strong>
+                    </label>
+                    <div>
+                    <ReactQuill value={description} id="wd-description" className="form-control ms-2 w-75"
+                    onChange={(value) => setDescription(value)}/>
+                    </div>
+                </div>
+
+                <div className="form-group row ms-5 mb-4 mt-2">
+
+                    <label htmlFor="wd-description" className="col-form-label"><strong>Answers</strong></label>
+                    
+                    <div className="d-flex align-items-center mt-4">
+                        <input id="true" type="radio" name="true-or-false" value="true" checked={correctAnswer === "true"} 
+                        onChange={(e) => setCorrectAnswer(e.target.value)}/>
+                        <label className="ms-2" htmlFor="true">True</label>
+                    </div>
+
+                    <div className="d-flex align-items-center mt-4">
+                        <input id="false" type="radio" name="true-or-false" value="false" checked={correctAnswer === "false"}
+                        onChange={(e) => setCorrectAnswer(e.target.value)}/>
+                        <label className="ms-2" htmlFor="false">False</label>
+                    </div>
+
+                    <div>
+                        <br /><br />
+                        <a className="btn btn-secondary me-3">Cancel</a>
+                        <a className="btn btn-warning me-3" onClick={updateAQuestion}>Update Question</a>
+                        <a className="btn btn-danger" onClick={deleteAQuestion}>Remove Question</a>
+                    </div>
+
+                </div>
+                </form>
+                </>
+                }
+
+                {question && questionType === "fill in the blank" && 
+                <>
+                <form>
+                <div className="form-group row ms-5 mb-4 mt-2">
+                    <div className="d-flex align-items-center">
+                        <label htmlFor="wd-name" className="col-form-label"><strong>Question Type</strong></label>
+                        <select className="form-select ms-2 w-25" id="wd-question-type" value={questionType}
+                        onChange={(e) => setQuestionType(e.target.value)}>
+                            {questionTypes.map((type) => (
+                                question.type === type ? <option selected value={type}>{type}</option> :
+                                <option value={type}>{type}</option>
+                            ))}
+                        </select>
+                        <label htmlFor="wd-question-point" className="col-form-label ms-4"><strong>Points</strong></label>
+                        <input id="wd-points" className="form-control ms-2 w-25" value={points}
+                        onChange={(e)=>{setPoints(e.target.value)}}/>
+                    </div>
+                    </div>
+
+                    <div className="form-group row ms-5 mb-4 mt-2">
+                        <label htmlFor="wd-description" className="col-form-label">
+                        <strong>Description</strong>
+                        </label>
+                        <div>
+                        <ReactQuill value={description} id="wd-description" className="form-control ms-2 w-75"
+                        onChange={(value) => setDescription(value)}/>
+                        </div>
+                </div>
+                    
+                 <div className="form-group row ms-5 mb-4 mt-2">
+                 <label htmlFor="wd-description" className="col-form-label"><strong>Answers</strong></label>
+                 {possibleAnswers.map((choice: string, index: number) => (
+                    <div className="d-flex align-items-center mt-4" key={index}>
+                         <label htmlFor="wd-question-point" className="col-form-label ms-4"><strong>Possible Answer</strong></label>
+                        <input id={`choice-${index}`} className="form-control ms-2 w-25" 
+                            value={choice} 
+                            onChange={(e) => {
+                                const updatedAnswers = [...possibleAnswers];
+                                updatedAnswers[index] = e.target.value;
+                                setPossibleAnswers(updatedAnswers);
+                            }}
+                        />
+                        <a className="btn text-danger"
+                            onClick={() => {
+                                const updatedAnswers = possibleAnswers.filter((_:string, i: number) => i !== index);
+                                setPossibleAnswers(updatedAnswers);
+                            }}
+                        >
+                            Remove
+                        </a>
+                    </div>
+                ))}
+                 
+                 <div>
+                    <a className="btn btn-link text-danger mt-4" onClick={addNewAnswer}>+ Add Another Choice</a>
+                </div>
+                </div>
+
+                <div>
+                    <br /><br />
+                    <a className="btn btn-secondary me-3">Cancel</a>
+                    <a className="btn btn-warning me-3" onClick={updateAQuestion}>Update Question</a>
+                    <a className="btn btn-danger" onClick={deleteAQuestion}>Remove Question</a>
+
+                 </div>
+                </form>
+                </>
+                }
+
+            <div >
+                <QuestionsNavigation questions={questions}/>
+            </div>
+
+            </div>
+            <hr />
+            <button className="btn btn-danger float-end" onClick={addNewQuestion} >Add A Question</button>
+            
+        </div>
