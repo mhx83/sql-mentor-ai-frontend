@@ -1,11 +1,12 @@
 import { SlCalender } from "react-icons/sl";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { deleteQuiz, updateQuiz, switchCreationStatus } from "./reducer";
 import * as quizzesClient from "./client";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+export const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
 
 export default function QuizEditor() {
 
@@ -20,6 +21,7 @@ export default function QuizEditor() {
     const quiz = quizzes.find((quiz: any) => quiz._id === qid);
     const [questions, setQuestions] = useState<any[]>([]);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const { currentUser } = useSelector((state: any) => state.accountReducer);
 
@@ -54,7 +56,6 @@ export default function QuizEditor() {
     }, [qid]);
 
     const cancelByStatus = async () => {
-
         if (!qid) return;
 
         if (new_quiz_created === true) {
@@ -111,12 +112,56 @@ export default function QuizEditor() {
         return `${year}-${month}-${day} ${hours}:${minutes}`;
     };
 
+    const viewLastAttempt = async () => {
+        if (!qid) {
+            alert("Please complete at least one question before submitting.");
+            return;
+        }
+
+        try {
+            const data = await quizzesClient.lastAttempt(qid);
+            console.log("data:", data);
+            if (!data || data.message) {
+                alert("No previous attempts found.");
+                return;
+            }
+            navigate(`/Kanbas/Courses/${cid}/Quizzes/${qid}/Result`, { state: data });
+        } catch (error) {
+            console.error("Error fetching last attempt:", error);
+            alert("Failed to fetch last attempt.");
+        }
+    };
+
+    const handleAttempt = async () => {
+        try {
+            const response = await fetch(`${REMOTE_SERVER}/api/quizzes/${qid}/attempt/check`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const data = await response.json();
+
+            if (data.canAttempt) {
+                navigate(`/Kanbas/Courses/${cid}/Quizzes/${qid}/Questions/View/${questions[0]._id}`);
+            } else {
+                alert(data.message);
+            }
+        } catch (error) {
+            console.error("Attempts checking error:", error);
+            alert("Unexpected error, please try again later。");
+        }
+    };
+
+
     useEffect(() => {
         if (quiz) {
             setShowCorrectAnswer(quiz.show_correct_answer === "yes" ? "yes" : "no");
             setShowAnswerDate(quiz.show_answer_date || "9999-12-31T23:59");
         }
     }, [quiz]);
+
 
     return (
         <div className="wd-quizzes-editor">
@@ -266,7 +311,7 @@ export default function QuizEditor() {
                                                 }} />
                                             <label className="form-check-label pt-1 me-2" htmlFor="wd-media-recordings">Allow Multiple Attempts</label>
                                             {hasManyAttempts === "yes" && <><input type="input" id="wd-num-of-attempts" className="form-control w-25 col-form-label ms-2"
-                                                value={quiz.how_many_attempts}
+                                                value={numOfAttempts}
                                                 onChange={(e) => setNumOfAttempts(e.target.value)}
                                                 disabled={hasManyAttempts === "no"} />
                                                 <span className="ms-2">Attempt(s)</span></>}
@@ -404,9 +449,16 @@ export default function QuizEditor() {
                 <>
                     <div className="float-end">
                         <Link to={`/Kanbas/Courses/${cid}/Quizzes`} className="btn btn-light border me-2">Go Back</Link>
-                        <Link to={`/Kanbas/Courses/${cid}/Quizzes/${qid}/Questions/View/${questions.length > 0 && questions[0]._id}`}
+                        <button onClick={viewLastAttempt} className="btn btn-secondary border me-2">
+                            View Last Attempt
+                        </button>
+                        <Link to="#" onClick={handleAttempt} className="btn btn-danger border">
+                            Attempt
+                        </Link>
+                        {/* <Link to={`/Kanbas/Courses/${cid}/Quizzes/${qid}/Questions/View/${questions.length > 0 && questions[0]._id}`}
                             className="btn btn-danger border" >
-                            Attempt</Link>
+                            Attempt
+                        </Link> */}
                     </div>
                 </>}
 

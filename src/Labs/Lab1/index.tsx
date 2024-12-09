@@ -233,7 +233,7 @@ export default function Lab1() {
         to get dummy text<br/>
 
         Please
-        <a id="wd-lipsum" href="https://github.com/yuesheng-huang/kanbas-react-web-app/tree/a1">click here</a>
+        <a id="wd-lipsum" href="https://github.com/mhx83/kanbas-react-web-app/tree/a1">click here</a>
         to get to my Github repo<br/>
             
         </div>

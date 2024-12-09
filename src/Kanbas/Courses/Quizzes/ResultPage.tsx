@@ -141,7 +141,7 @@ const ResultPage = () => {
     const { cid } = useParams();
 
     // 获取通过 state 传递的数据
-    const { score, totalQuestions, results } = location.state || {};
+    const { score, totalPoints, results } = location.state || {};
 
     // 如果没有结果数据，跳回到测验列表
     if (!results) {
@@ -151,14 +151,14 @@ const ResultPage = () => {
 
     // 添加调试信息
     console.log("Score:", score);
-    console.log("Total Questions:", totalQuestions);
+    console.log("Total Points:", totalPoints);
     console.log("Results:", results);
 
     return (
         <div>
             <h1>Quiz Results</h1>
             <p>
-                <strong>Score:</strong> {score} / {totalQuestions}
+                <strong>Score:</strong> {score} / {totalPoints}
             </p>
 
             <table className="table table-bordered">
@@ -176,8 +176,8 @@ const ResultPage = () => {
                             <td>{index + 1}</td>
                             <td>{result.userAnswer || "No Answer"}</td>
                             <td>
-                                {Array.isArray(result.correctAnswer)
-                                    ? result.correctAnswer.join(", ")
+                                {(result.possibleAnswers.length > 0)
+                                    ? result.possibleAnswers.join(", ")
                                     : result.correctAnswer}
                             </td>
                             <td>

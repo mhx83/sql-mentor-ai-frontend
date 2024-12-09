@@ -48,8 +48,12 @@ const questionsSlice = createSlice({
         setAnswer: (state, { payload: { questionId, answer } }) => {
             state.answers[questionId] = answer; // 更新答案状态
         },
+
+        clearAnswers: (state) => {
+            state.answers = {}; // 清空答案状态
+        },
     }
 });
 
-export const { addQuestion, updateQuestion, deleteQuestion, setQuestions, setAnswer } = questionsSlice.actions;
+export const { addQuestion, updateQuestion, deleteQuestion, setQuestions, setAnswer, clearAnswers } = questionsSlice.actions;
 export default questionsSlice.reducer;

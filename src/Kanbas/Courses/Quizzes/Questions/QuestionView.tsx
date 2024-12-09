@@ -193,7 +193,8 @@ import QuestionsNavigation from "./Navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import * as quizzesClient from "../client";
-import { setQuestions, setAnswer } from "./reducer";
+import { setQuestions, setAnswer, clearAnswers } from "./reducer";
+import { Link } from "react-router-dom";
 
 export default function QuestionView() {
     const location = useLocation();
@@ -271,6 +272,7 @@ export default function QuestionView() {
             console.log("qid:", qid);
             console.log("data:", data);
             // navigate(`/Kanbas/Courses/${qid}/Result`, { state: data });
+            dispatch(clearAnswers());
             navigate(`/Kanbas/Courses/${cid}/Quizzes/${qid}/Result`, { state: data });
         } catch (e) {
             console.error("Error details:", e);
@@ -394,9 +396,14 @@ export default function QuestionView() {
                 </div>
             </div>
             <hr />
+            <div className="float-end d-flex justify-content-end">
+
+            <Link to={`/Kanbas/Courses/${cid}/Quizzes/${qid}`} className="btn btn-light border me-2">Go Back</Link>
             <button className="btn btn-danger float-end" onClick={submitQuiz}>
                 Submit Quiz
             </button>
+            </div>
+
         </div>
     );
 }
