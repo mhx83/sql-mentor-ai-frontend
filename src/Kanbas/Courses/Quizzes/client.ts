@@ -47,3 +47,9 @@ export const lastAttempt = async (quizId: string) => {
     const { data } = await axiosWithCredentials.get(`${QUIZ_API}/${quizId}/lastAttempt`);
     return data;
 };
+
+export const getPoints = async (quizId: string) => {
+    const { data: questions } = await axiosWithCredentials.get(`${QUIZ_API}/${quizId}/questions`);
+    const totalPoints = questions.reduce((sum: number, question: any) => sum + (question.points || 0), 0);
+    return totalPoints;
+};
