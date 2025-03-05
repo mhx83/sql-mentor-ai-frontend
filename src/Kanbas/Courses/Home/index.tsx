@@ -1,4 +1,5 @@
 import Modules from "../Modules";
+import Quizzes from "../Quizzes"
 import CourseStatus from "./Status";
 import { useSelector } from "react-redux";
 import { BiSolidBarChartAlt2 } from "react-icons/bi";
@@ -11,7 +12,7 @@ export default function Home() {
   return (
     <div className="d-flex" id="wd-home">
       <div className="flex-fill">
-        <Modules />
+        <Quizzes />
       </div>
 
       <div className="d-flex d-md-block">

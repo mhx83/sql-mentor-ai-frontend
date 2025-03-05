@@ -46,8 +46,9 @@ export default function Courses({ courses }: { courses: any[]; }) {
                     <Routes>
                         <Route path="/" element={<Navigate to="Home" />} />
                         <Route path="Home" element={<Home />} />
-                        <Route path="Modules" element={<Modules />} />
-                        <Route path="Assignments" element={<Assignments />} />
+                        {/*屏蔽掉Assignment和Modules模块*/}
+                        {/*<Route path="Modules" element={<Modules />} />*/}
+                        {/*<Route path="Assignments" element={<Assignments />} />*/}
                         <Route path="Quizzes" element={<Quizzes />} />
                         <Route path="Quizzes/:qid" element={<QuizEditor />} />
                         <Route path="Quizzes/:qid/Questions" element={<Questions />} />

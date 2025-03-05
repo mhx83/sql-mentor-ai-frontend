@@ -176,9 +176,7 @@ const ResultPage = () => {
                             <td>{index + 1}</td>
                             <td>{result.userAnswer || "No Answer"}</td>
                             <td>
-                                {(result.possibleAnswers.length > 0)
-                                    ? result.possibleAnswers.join(", ")
-                                    : result.correctAnswer}
+                                {result.correctAnswer}
                             </td>
                             <td>
                                 {result.isCorrect ? (
