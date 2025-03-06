@@ -205,7 +205,7 @@ export default function QuestionView() {
     const { cid, qid, qaid } = useParams();
     const { currentUser } = useSelector((state: any) => state.accountReducer);
     const { questions, answers } = useSelector((state: any) => state.questionsReducer);
-    const question = questions.find((q: any) => q._id === qaid);
+    const question = questions.find((q: any) => q._id === Number(qaid));
 
     // Local state for question-specific details
     const [description, setDescription] = useState("");
@@ -241,7 +241,7 @@ export default function QuestionView() {
         if (index < questions.length - 1) {
             index += 1;
         }
-        navigate(`${currentPath.replace(`/${qaid}`, `/${questions[index]._id}`)}`);
+        navigate(currentPath.replace(/\/View\/\d+$/, `/View/${questions[index]._id}`));
     };
 
     const goToPreviousQuestion = () => {

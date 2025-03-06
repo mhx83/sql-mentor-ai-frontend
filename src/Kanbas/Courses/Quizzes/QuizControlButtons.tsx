@@ -25,7 +25,7 @@ export default function QuizControlButtons({quizID} : {quizID: string}) {
   return (
     <div className="float-end">
       <FaTrash className="text-danger me-2 mb-1" onClick={deleteCurrentQuiz}/>
-      <GreenCheckmark quizID={quizID} />
+      {/*<GreenCheckmark quizID={quizID} />*/}
       <IoEllipsisVertical className="fs-4" />
     </div>
     );

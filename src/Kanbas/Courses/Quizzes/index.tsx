@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setQuizzes } from './reducer';
 import * as coursesClient from "../client";
 import { useEffect, useState } from 'react';
+import {findQuizzesForCourse} from "../client";
 
 export default function Quizzes() {
 
@@ -19,7 +20,7 @@ export default function Quizzes() {
 
     const fetchQuizzes = async () => {
         if (currentUser.role === "STUDENT") {
-            const publishedQuizzes = await coursesClient.findPublishedQuizzesForCourse(cid as string);
+            const publishedQuizzes = await coursesClient.findQuizzesForCourse(cid as string);
             console.log(publishedQuizzes);
             dispatch(setQuizzes(publishedQuizzes));
         } else {
@@ -74,8 +75,8 @@ export default function Quizzes() {
                                 <div className="mt-2 mb-2 flex-grow-1">
                                     <Link to={`/Kanbas/Courses/${cid}/Quizzes/${quiz._id}`} className="text-black text-decoration-none">
                                         <ul><strong>{quiz.name}</strong></ul></Link>
-                                    <ul className="wd-assignment-description"> {compareDate(quiz.available_date, quiz.due_date)} | <strong> Due</strong>
-                                        &nbsp;{formatDate(quiz.due_date)} | {quiz.points} pts | {quiz.num_of_questions} Questions</ul>
+                                    <ul className="wd-assignment-description"> {compareDate(quiz.available_date, quiz.due_date)}
+                                        | {quiz.points} pts | {quiz.num_of_questions} Questions</ul>
                                 </div>
                                 {currentUser.role === "FACULTY" &&
                                     <><br /><QuizControlButtons quizID={quiz._id} /><br /></>}

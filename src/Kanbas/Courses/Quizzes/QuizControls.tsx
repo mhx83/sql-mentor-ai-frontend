@@ -24,20 +24,6 @@ export default function QuizControls() {
             quiz_type: "Graded Quiz",
             points: 100,
             assignment_group: "QUIZZES",
-            shuffle_answer: "no",
-            has_time_limit: "yes",
-            time_limit: 20,
-            multiple_attempts: "no",
-            has_many_attempts: "no",
-            how_many_attempts: 1,
-            show_correct_answer: "no",
-            access_code: "blank",
-            one_question_at_a_time: "yes",
-            webcam_required: "no",
-            lock_questions_after_answering: "no",
-            due_date: "2025-05-14",
-            available_date: "2025-05-07",
-            until_date: "2025-05-14",
             publish_status: "unpublished"
         };
 

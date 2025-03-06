@@ -4,6 +4,7 @@ import * as quizzesClient from "../client";
 import * as questionsClient from "./client";
 import { setQuestions } from "./reducer";
 import { useEffect } from "react";
+import {current} from "@reduxjs/toolkit";
 
 export default function Questions() {
 
@@ -26,6 +27,7 @@ export default function Questions() {
             sum += questions[i].points;
         }
 
+        console.log(quiz)
         const currentQuiz = {
             _id: qid,
             name: quiz.name,
@@ -33,21 +35,9 @@ export default function Questions() {
             course: quiz.course,
             num_of_questions: questions.length,
             points: sum,
-            shuffle_answer: quiz.shuffle_answer,
-            has_time_limit: quiz.has_time_limit,
-            time_limit: quiz.time_limit,
-            has_many_attempts: quiz.has_many_attempts,
-            how_many_attempts: quiz.how_many_attempts,
-            show_correct_answer: quiz.show_correct_answer,
-            show_answer_date: quiz.show_answer_date,
-            access_code_required: quiz.access_code_required,
-            access_code: quiz.access_code,
-            one_question_at_a_time: quiz.one_question_at_a_time,
-            webcam_required: quiz.webcam_required,
-            lock_questions_after_answering: quiz.lock_questions_after_answering,
-            due_date: quiz.due_date,
-            available_date: quiz.available_date,
-            until_date: quiz.until_date,
+            quiz_type: quiz.quiz_type,
+            assignment_group: quiz.assignment_group,
+            difficulty: quiz.difficulty
           };
           await quizzesClient.updateQuiz(currentQuiz);
     }
