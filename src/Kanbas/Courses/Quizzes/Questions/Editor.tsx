@@ -318,12 +318,14 @@ export default function QuestionEditor() {
                                 const updatedAnswers = [...possibleAnswers];
                                 updatedAnswers[index] = e.target.value;
                                 setPossibleAnswers(updatedAnswers);
+                                setCorrectAnswer(updatedAnswers);
                             }}
                         />
                         <a className="btn text-danger"
                             onClick={() => {
                                 const updatedAnswers = possibleAnswers.filter((_:string, i: number) => i !== index);
                                 setPossibleAnswers(updatedAnswers);
+                                setCorrectAnswer(updatedAnswers);
                             }}
                         >
                             Remove
@@ -357,9 +359,7 @@ export default function QuestionEditor() {
             Preview Quiz</Link>
             <button className="btn btn-danger float-end" onClick={addNewQuestion} >Add A Question</button>
             </>
-            
             }
-
         </div>
     );
 }
