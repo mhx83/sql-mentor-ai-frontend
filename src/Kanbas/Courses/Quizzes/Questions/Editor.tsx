@@ -95,7 +95,7 @@ export default function QuestionEditor() {
         
         if (!qaid || !qid) return;
 
-        const currentQuestionIndex = questions.findIndex((q: any) => q._id === qaid);
+        const currentQuestionIndex = questions.findIndex((q: any) => q._id === Number(qaid));
         await questionsClient.deleteQuestion(qaid);
         fetchQuestions();
 
@@ -103,7 +103,7 @@ export default function QuestionEditor() {
         if (currentQuestionIndex >= 0) {
             nextQuestion = questions[currentQuestionIndex + 1] || questions[currentQuestionIndex - 1];
         }
-    
+
         if (nextQuestion) {
             navigate(`${currentPath.replace(`/${qaid}`, `/${nextQuestion._id}`)}`);
         } else {

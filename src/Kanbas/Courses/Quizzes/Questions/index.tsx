@@ -27,7 +27,6 @@ export default function Questions() {
             sum += questions[i].points;
         }
 
-        console.log(quiz)
         const currentQuiz = {
             _id: qid,
             name: quiz.name,
