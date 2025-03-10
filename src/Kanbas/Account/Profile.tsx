@@ -42,7 +42,7 @@ export default function Profile() {
                 placeholder="first name" onChange={(e) => setProfile({ ...profile, firstName: e.target.value })}/>
             <input id='wd-lastname' value={profile.lastName} type="Last Name" className="form-control mb-2"
                 placeholder="last name" onChange={(e) => setProfile({ ...profile, lastName:  e.target.value })}/>
-            <input id='wd-dob' value={profile.dob} className="form-control mb-2"
+            <input id='wd-dob' value={profile.dob?.split("T")[0]} className="form-control mb-2"
                 placeholder="date of birth" onChange={(e) => setProfile({ ...profile, dob: e.target.value })}/>
             <input value={profile.email} id="wd-email" className="form-control mb-2"
                  placeholder="email" onChange={ (e) => setProfile({ ...profile, email: e.target.value })}/>

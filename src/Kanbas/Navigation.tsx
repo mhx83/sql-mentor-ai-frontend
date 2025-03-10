@@ -4,6 +4,7 @@ import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
 import { LuPlaneLanding } from "react-icons/lu";
 import { Link, useLocation } from "react-router-dom";
+import { BiSolidBarChartAlt2 } from "react-icons/bi";
 
 export default function KanbasNavigation() {
 
@@ -11,10 +12,8 @@ export default function KanbasNavigation() {
   const links = [
     { label: "Dashboard", path: "/Kanbas/Dashboard", icon: AiOutlineDashboard },
     { label: "Courses",   path: "/Kanbas/Dashboard", icon: LiaBookSolid },
-    { label: "Calendar",  path: "/Kanbas/Calendar",  icon: IoCalendarOutline },
+    { label: "Analytics",  path: "/Kanbas/Analytics",  icon: BiSolidBarChartAlt2 },
     { label: "Inbox",     path: "/Kanbas/Inbox",     icon: FaInbox },
-    { label: "Labs",      path: "/Labs",             icon: LiaCogSolid },
-    { label: "Landing Page", path: "/LandingPage", icon: LuPlaneLanding },
   ];
 
   return (
