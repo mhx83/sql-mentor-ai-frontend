@@ -20,7 +20,7 @@ export default function Courses({ courses }: { courses: any[]; }) {
 
     const { cid } = useParams();
     const [users, setUsers] = useState<any[]>([]);
-    const course = courses.find((course) => course._id === cid);
+    const course = courses.find((course) => course._id === Number(cid));
     const { pathname } = useLocation();
 
     const fetchUsers = async () => {

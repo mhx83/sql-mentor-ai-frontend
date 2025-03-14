@@ -4,6 +4,7 @@ import Account from "./Account";
 import Dashboard from "./Dashboard";
 import KanbasNavigation from "./Navigation";
 import Courses from "./Courses";
+import Analytics from "./Analytics";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ProtectedRoute from "./Account/ProtectedRoute";
@@ -114,7 +115,8 @@ export default function Kanbas() {
                                 updateEnrollment={updateEnrollment} /> </ProtectedRoute>} />
                         <Route path="Courses/:cid/*" element={<ProtectedRoute><Courses
                             courses={courses} /></ProtectedRoute>} />
-                        <Route path="/Analytics" element={<h1>Analytics</h1>} />
+                        <Route path="/Analytics/*" element={<ProtectedRoute><Analytics
+                          courses={courses} /></ProtectedRoute>} />
                         <Route path="/Inbox" element={<h1>Inbox</h1>} />
                     </Routes>
                 </div>
