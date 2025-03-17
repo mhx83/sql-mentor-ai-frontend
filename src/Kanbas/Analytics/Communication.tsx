@@ -39,7 +39,7 @@ export default function Communication() {
         </div>
       </div>
 
-      <div style={{textAlign: "center"}}>
+      <div style={{textAlign: "center"}} className="mt-4">
         <ResponsiveContainer width="90%" height={450} className="mt-2">
           <BarChart data={communicationData} margin={{top: 0, bottom: 40, left: 10, right: 0}}>
             <CartesianGrid strokeDasharray="3 3"/>

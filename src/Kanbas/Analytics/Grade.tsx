@@ -18,8 +18,16 @@ export default function Grade({ courses }: { courses: any[]; }) {
 
   const fetchCourseData = async () => {
     if (!course) return;
-    const gradeData = await analyticsClient.findCourseGrades(String(currentUser._id), String(currentUser.role), String(course._id), );
-    const averageGrade = await analyticsClient.findCourseAverageGrades(String(currentUser._id), String(currentUser.role), String(course._id));
+    const gradeData = await analyticsClient.findCourseGrades(String(currentUser._id), currentUser.role, String(course._id), );
+    // Calculate the average grade only for "submitted" grades
+    const submittedGrades = gradeData
+      .filter((item) => item.type === "submitted")
+      .map((item) => item.grade);
+
+    const averageGrade = submittedGrades.length > 0
+      ? parseFloat(
+        (submittedGrades.reduce((sum, value) => sum + value, 0) / submittedGrades.length).toFixed(2))
+      : 0;
     setCourseData(gradeData);
     setGrade(averageGrade);
   };
@@ -65,7 +73,7 @@ export default function Grade({ courses }: { courses: any[]; }) {
               dataKey="name"
               label={{
                 value: currentUser.role === "STUDENT" ? "Quiz Name" : "Student Name",
-                position: "insideBottom", offset: -10,
+                position: "insideBottom", offset: -20,
                 style: {fill: "black", fontSize: 18, fontWeight: "bold"}
               }}
               type="category"
