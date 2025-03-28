@@ -21,12 +21,12 @@ export default function Grade({ courses }: { courses: any[]; }) {
     const gradeData = await analyticsClient.findCourseGrades(String(currentUser._id), currentUser.role, String(course._id), );
     // Calculate the average grade only for "submitted" grades
     const submittedGrades = gradeData
-      .filter((item) => item.type === "submitted")
-      .map((item) => item.grade);
+      .filter((item: any) => item.type === "submitted")
+      .map((item: any) => Number(item.grade));
 
     const averageGrade = submittedGrades.length > 0
       ? parseFloat(
-        (submittedGrades.reduce((sum, value) => sum + value, 0) / submittedGrades.length).toFixed(2))
+        (submittedGrades.reduce((sum: number, value: number) => sum + value, 0) / submittedGrades.length).toFixed(2))
       : 0;
     setCourseData(gradeData);
     setGrade(averageGrade);

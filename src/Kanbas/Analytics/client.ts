@@ -17,37 +17,37 @@ const ANALYTICS_API = `${REMOTE_SERVER}/api/user`;
  *   - Return each student's name with their average grade and `type: "submitted"`.
  */
 export const findCourseGrades = async (userId: string, userRole: string, courseId: string) => {
-  // const { data } = await axiosWithCredentials.get(`${ANALYTICS_API}/${userId}/${userRole}/analytics/${courseId}`);
+  const { data } = await axiosWithCredentials.get(`${ANALYTICS_API}/${userId}/${userRole}/analytics/${courseId}`);
 
   // Sample Returned Data
-  let data;
-  if (userRole === "STUDENT") {
-    data = [
-      { name: "Quiz 1", grade: 100, type: "submitted" },
-      { name: "Quiz 2", grade: 85, type: "submitted" },
-      { name: "Quiz 3", grade: 100, type: "submitted" },
-      { name: "Quiz 4", grade: 90, type: "submitted" },
-      { name: "Quiz 5", grade: 100, type: "submitted" },
-      { name: "Quiz 6", grade: 100, type: "submitted" },
-      { name: "Quiz 7", grade: 0, type: "missing" },
-      { name: "Quiz 8", grade: 0, type: "missing" },
-      { name: "Quiz 9", grade: 0, type: "missing" },
-      { name: "Quiz 10", grade: 0, type: "missing" },
-    ];
-  } else {
-    data = [
-      { name: "Student 1", grade: 70.3, type: "submitted" },
-      { name: "Student 2", grade: 85.4, type: "submitted" },
-      { name: "Student 3", grade: 90.2, type: "submitted" },
-      { name: "Student 4", grade: 87.4, type: "submitted" },
-      { name: "Student 5", grade: 93, type: "submitted" },
-      { name: "Student 6", grade: 67, type: "submitted" },
-      { name: "Student 7", grade: 75.5, type: "submitted" },
-      { name: "Student 8", grade: 75.1, type: "submitted" },
-      { name: "Student 9", grade: 82.3, type: "submitted" },
-      { name: "Student 10", grade: 97.2, type: "submitted" },
-    ];
-  }
+  // let data;
+  // if (userRole === "STUDENT") {
+  //   data = [
+  //     { name: "Quiz 1", grade: 100, type: "submitted" },
+  //     { name: "Quiz 2", grade: 85, type: "submitted" },
+  //     { name: "Quiz 3", grade: 100, type: "submitted" },
+  //     { name: "Quiz 4", grade: 90, type: "submitted" },
+  //     { name: "Quiz 5", grade: 100, type: "submitted" },
+  //     { name: "Quiz 6", grade: 100, type: "submitted" },
+  //     { name: "Quiz 7", grade: 0, type: "missing" },
+  //     { name: "Quiz 8", grade: 0, type: "missing" },
+  //     { name: "Quiz 9", grade: 0, type: "missing" },
+  //     { name: "Quiz 10", grade: 0, type: "missing" },
+  //   ];
+  // } else {
+  //   data = [
+  //     { name: "Student 1", grade: 70.3, type: "submitted" },
+  //     { name: "Student 2", grade: 85.4, type: "submitted" },
+  //     { name: "Student 3", grade: 90.2, type: "submitted" },
+  //     { name: "Student 4", grade: 87.4, type: "submitted" },
+  //     { name: "Student 5", grade: 93, type: "submitted" },
+  //     { name: "Student 6", grade: 67, type: "submitted" },
+  //     { name: "Student 7", grade: 75.5, type: "submitted" },
+  //     { name: "Student 8", grade: 75.1, type: "submitted" },
+  //     { name: "Student 9", grade: 82.3, type: "submitted" },
+  //     { name: "Student 10", grade: 97.2, type: "submitted" },
+  //   ];
+  // }
   return data;
 };
 
@@ -66,27 +66,27 @@ export const findCourseGrades = async (userId: string, userRole: string, courseI
  * - Ensure that activities are filtered based on their timestamps to match the requested range.
  */
 export const fetchActivityData = async (userId: string, userRole: string, dateRange: string, countType: string) => {
-  // const { data } = await axiosWithCredentials.get(`${ANALYTICS_API}/${userId}/${userRole}/analytics/${dateRange}/${countType}`);
+   const { data } = await axiosWithCredentials.get(`${ANALYTICS_API}/${userId}/${userRole}/analytics/${dateRange}/${countType}`);
 
   // Sample Returned Data
-  let data;
-  if (userRole === "STUDENT") {
-    data = [
-      { name: "DB101", count: 5 },
-      { name: "DB102", count: 10 },
-      { name: "DB103", count: 3 },
-      { name: "DB104", count: 1 },
-      { name: "DB105", count: 1 },
-    ];
-  } else {
-    data = [
-      { name: "Student 1", count: 24 },
-      { name: "Student 2", count: 30 },
-      { name: "Student 3", count: 18 },
-      { name: "Student 4", count: 54 },
-      { name: "Student 5", count: 29 },
-    ];
-  }
+  // let data;
+  // if (userRole === "STUDENT") {
+  //   data = [
+  //     { name: "DB101", count: 5 },
+  //     { name: "DB102", count: 10 },
+  //     { name: "DB103", count: 3 },
+  //     { name: "DB104", count: 1 },
+  //     { name: "DB105", count: 1 },
+  //   ];
+  // } else {
+  //   data = [
+  //     { name: "Student 1", count: 24 },
+  //     { name: "Student 2", count: 30 },
+  //     { name: "Student 3", count: 18 },
+  //     { name: "Student 4", count: 54 },
+  //     { name: "Student 5", count: 29 },
+  //   ];
+  // }
   return data;
 };
 
