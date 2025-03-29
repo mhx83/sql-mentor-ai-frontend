@@ -71,6 +71,7 @@ import { useState } from "react";
 import Inbox from "./Inbox";
 import Sent from "./Sent";
 import ComposeModal from "./ComposeModal";
+import {FaPen} from "react-icons/fa";
 
 export default function CommunicationModule() {
   const location = useLocation();
@@ -87,17 +88,19 @@ export default function CommunicationModule() {
         <h1 className="me-3-7 fs-7 mb-1">
           Inbox for {currentUser.firstName} {currentUser.lastName}
         </h1>
-        <button className="btn btn-danger" onClick={() => setShowCompose(true)}>
-          Compose
-        </button>
       </div>
 
-      <hr />
+      <hr/>
+
+      <button className="btn btn-primary d-flex align-items-center" onClick={() => setShowCompose(true)}>
+        <FaPen className="me-2"/>
+        New Message
+      </button>
 
       {/* ✅ 标签页导航（与 analytics 一致） */}
-      <div id="wd-css-navigating-with-tabs" className="mt-5 me-4">
+      <div id="wd-css-navigating-with-tabs" className="mt-4 me-4">
         <ul className="nav nav-tabs">
-          {links.map((link) => (
+        {links.map((link) => (
             <li className="nav-item" key={link}>
               <Link
                 to={link}
@@ -112,12 +115,12 @@ export default function CommunicationModule() {
         </ul>
       </div>
 
-      <br /><br />
+      <br/><br/>
 
       <Routes>
-        <Route path="/" element={<Navigate to="Inbox" />} />
-        <Route path="Inbox" element={<Inbox />} />
-        <Route path="Sent" element={<Sent />} />
+        <Route path="/" element={<Navigate to="Inbox"/>}/>
+        <Route path="Inbox" element={<Inbox/>}/>
+        <Route path="Sent" element={<Sent/>}/>
       </Routes>
 
       {/* ✅ Compose 弹窗 */}
@@ -125,7 +128,8 @@ export default function CommunicationModule() {
         show={showCompose}
         onClose={() => setShowCompose(false)}
         senderId={currentUser._id}
-        onSend={() => {}}
+        onSend={() => {
+        }}
       />
     </div>
   );
