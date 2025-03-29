@@ -63,7 +63,7 @@ export default function Communication() {
                         <Tooltip cursor={{ fill: "#f5f5f5" }} />
                         <Bar dataKey="count" barSize={40}>
                             {communicationData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={entry.role === "STUDENT" ? "#9C27B0" : "#007bff"} />
+                                <Cell key={`cell-${index}`} fill={entry.role === "FACULTY" ? "#9C27B0" : "#007bff"} />
                             ))}
                         </Bar>
                     </BarChart>

@@ -71,7 +71,7 @@ export default function Activity() {
             <YAxis
               dataKey="count"
               label={{
-                value: `${countType} Counts`, angle: -90, position: "insideLeft",
+                value: "Counts", angle: -90, position: "insideLeft",
                 style: {fill: "black", fontSize: 18, fontWeight: "bold"}
               }}
             />
