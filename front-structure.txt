@@ -1,0 +1,125 @@
+.
+├── README.md
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── images
+│   │   ├── Aerodynamics.jpg
+│   │   ├── Ancient Chinese Environmental Management.jpg
+│   │   ├── Ancient Languages and Scripts of Middle-earth.jpg
+│   │   ├── Early Christianity and the Apostolic Age.jpg
+│   │   ├── Ethical Wisdom in Islamic Teachings.jpg
+│   │   ├── Foundations of Christian Ethics.jpg
+│   │   ├── History and Practice of Middle-earth Magic.jpg
+│   │   ├── Hydraulic Engineering in Ancient Civilizations.jpg
+│   │   ├── Innovations in Early 19th Century Education.jpg
+│   │   ├── Inorganic Chemistry.jpg
+│   │   ├── Leadership Lessons from Chinese Mythology.jpg
+│   │   ├── Leadership and Service in Christian Communities.jpg
+│   │   ├── NEU.png
+│   │   ├── Organic Chemistry.jpg
+│   │   ├── Philosophy of Independence and Liberation.jpg
+│   │   ├── Physical Chemistry.jpg
+│   │   ├── Principles of Democratic Education.jpg
+│   │   ├── Rocket Propulsion.jpg
+│   │   ├── Spacecraft Design.jpg
+│   │   ├── Sufi Philosophy and Mystical Traditions.jpg
+│   │   ├── Understanding the Unseen: Islamic Esotericism.jpg
+│   │   ├── Wizards, Elves, and Men: Inter-species Diplomacy in Middle-earth.jpg
+│   │   ├── reactjs.jpg
+│   │   ├── stacked.jpg
+│   │   └── teslabot.png
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+├── react_structure.txt
+├── sql-mentor-ai-frontend.iml
+├── src
+│   ├── App.css
+│   ├── App.test.tsx
+│   ├── App.tsx
+│   ├── Kanbas
+│   │   ├── Account
+│   │   │   ├── Navigation.tsx
+│   │   │   ├── Profile.tsx
+│   │   │   ├── ProtectedRoute.tsx
+│   │   │   ├── Session.tsx
+│   │   │   ├── Signin.tsx
+│   │   │   ├── Signup.tsx
+│   │   │   ├── Users.tsx
+│   │   │   ├── client.ts
+│   │   │   ├── index.tsx
+│   │   │   └── reducer.ts
+│   │   ├── Analytics
+│   │   │   ├── AICustom.tsx
+│   │   │   ├── Activity.tsx
+│   │   │   ├── Communication.tsx
+│   │   │   ├── Grade.tsx
+│   │   │   ├── client.ts
+│   │   │   └── index.tsx
+│   │   ├── Courses
+│   │   │   ├── Assignments
+│   │   │   │   ├── AssignmentControlButtons.tsx
+│   │   │   │   ├── AssignmentControls.tsx
+│   │   │   │   ├── AssignmentsControlButtons.jsx
+│   │   │   │   ├── Editor.tsx
+│   │   │   │   ├── GreenCheckmark.tsx
+│   │   │   │   ├── client.ts
+│   │   │   │   ├── index.tsx
+│   │   │   │   └── reducer.ts
+│   │   │   ├── Home
+│   │   │   │   ├── Status.tsx
+│   │   │   │   └── index.tsx
+│   │   │   ├── Modules
+│   │   │   │   ├── GreenCheckmark.tsx
+│   │   │   │   ├── LessonControlButtons.tsx
+│   │   │   │   ├── ModuleControlButtons.tsx
+│   │   │   │   ├── ModuleControls.tsx
+│   │   │   │   ├── ModuleEditor.tsx
+│   │   │   │   ├── ProhibitSign.tsx
+│   │   │   │   ├── client.ts
+│   │   │   │   ├── index.tsx
+│   │   │   │   └── reducer.ts
+│   │   │   ├── Navigation.tsx
+│   │   │   ├── People
+│   │   │   │   ├── Details.tsx
+│   │   │   │   └── Table.tsx
+│   │   │   ├── Quizzes
+│   │   │   │   ├── Editor.tsx
+│   │   │   │   ├── GreenCheckmark.tsx
+│   │   │   │   ├── Questions
+│   │   │   │   │   ├── Editor.tsx
+│   │   │   │   │   ├── Navigation.tsx
+│   │   │   │   │   ├── QuestionView.tsx
+│   │   │   │   │   ├── client.ts
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   ├── reducer.ts
+│   │   │   │   │   └── snippet.txt
+│   │   │   │   ├── QuizControlButtons.tsx
+│   │   │   │   ├── QuizControls.tsx
+│   │   │   │   ├── QuizzesControlButtons.tsx
+│   │   │   │   ├── ResultPage.tsx
+│   │   │   │   ├── client.ts
+│   │   │   │   ├── index.tsx
+│   │   │   │   └── reducer.ts
+│   │   │   ├── client.ts
+│   │   │   └── index.tsx
+│   │   ├── Dashboard.tsx
+│   │   ├── Navigation.tsx
+│   │   ├── enrollmentReducer.ts
+│   │   ├── index.tsx
+│   │   ├── store.ts
+│   │   └── styles.css
+│   ├── index.css
+│   ├── index.tsx
+│   ├── logo.svg
+│   ├── react-app-env.d.ts
+│   ├── reportWebVitals.ts
+│   └── setupTests.ts
+├── structure.txt
+└── tsconfig.json
+
+14 directories, 109 files
