@@ -16,9 +16,10 @@ export function AICustom() {
     setAiResponse(""); // Clear previous response
 
     try {
-      const response = await analyticsClient.fetchAIResponse(String(currentUser._id), inputText);
-      setAiResponse(response || "No response from AI.");
+      const responseData = await analyticsClient.fetchAIResponse(String(currentUser._id), inputText);
+      setAiResponse(responseData.response || "No response from AI.");
     } catch (error) {
+      console.error("Error fetching AI response:", error);
       setAiResponse("Failed to get AI response. Please try again.");
     } finally {
       setLoading(false);

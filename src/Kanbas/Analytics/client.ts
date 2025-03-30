@@ -122,23 +122,23 @@ export const fetchCommunicationData = async (userId: string) => {
  * - Return the AI-generated response as a string.
  */
 export const fetchAIResponse = async (userId: string, inputText: string) => {
-  // const response = await axiosWithCredentials.post(`${ANALYTICS_API}/${userId}/AICustom`, inputText);
+  const response = await axiosWithCredentials.post(`${ANALYTICS_API}/${userId}/AICustom`, { inputText });
 
   // Sample Returned Data
-  const response =
-    "Customer Name: CHARES\n" +
-    "Customer No: 1111\n" +
-    "ZIP Code: 67226\n" +
-    "Taken By: JOHNS\n" +
-    "Received on: 1995-01-12\n" +
-    "Shipped on: 1995-01-15\n" +
-    "Part No: 10601\n" +
-    "Part Name: Sleep Beauty\n" +
-    "Quantity: 4\n" +
-    "Price: 24.99\n" +
-    "Sum: 99.96\n" +
-    "\n" +
-    "Total Amount: 99.96";
+  // const response =
+  //   "Customer Name: CHARES\n" +
+  //   "Customer No: 1111\n" +
+  //   "ZIP Code: 67226\n" +
+  //   "Taken By: JOHNS\n" +
+  //   "Received on: 1995-01-12\n" +
+  //   "Shipped on: 1995-01-15\n" +
+  //   "Part No: 10601\n" +
+  //   "Part Name: Sleep Beauty\n" +
+  //   "Quantity: 4\n" +
+  //   "Price: 24.99\n" +
+  //   "Sum: 99.96\n" 
+  //   "\n" +
+  //   "Total Amount: 99.96";
 
-  return response;
+  return response.data;
 };
