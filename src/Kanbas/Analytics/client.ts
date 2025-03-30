@@ -99,16 +99,16 @@ export const fetchActivityData = async (userId: string, userRole: string, dateRa
  * - Return a list of users the given user has interacted with, along with the number of interactions and their roles.
  */
 export const fetchCommunicationData = async (userId: string) => {
-  // const {data} = await axiosWithCredentials.get(`${ANALYTICS_API}/${userId}/communication`);
+  const {data} = await axiosWithCredentials.get(`${ANALYTICS_API}/${userId}/communication`);
 
   // Sample Returned Data
-  const data = [
-    { name: "User A", count: 7, role: "STUDENT" },
-    { name: "User B", count: 2, role: "STUDENT" },
-    { name: "User C", count: 1, role: "FACULTY" },
-    { name: "User D", count: 4, role: "STUDENT" },
-    { name: "User E", count: 2, role: "FACULTY" },
-  ];
+  // const data = [
+  //   { name: "User A", count: 7, role: "STUDENT" },
+  //   { name: "User B", count: 2, role: "STUDENT" },
+  //   { name: "User C", count: 1, role: "FACULTY" },
+  //   { name: "User D", count: 4, role: "STUDENT" },
+  //   { name: "User E", count: 2, role: "FACULTY" },
+  // ];
   return data;
 };
 
