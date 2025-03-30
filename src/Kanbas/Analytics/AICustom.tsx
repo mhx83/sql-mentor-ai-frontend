@@ -17,7 +17,7 @@ export function AICustom() {
 
     try {
       const responseData = await analyticsClient.fetchAIResponse(String(currentUser._id), inputText);
-      setAiResponse(responseData.response || "No response from AI.");
+      setAiResponse(JSON.stringify(responseData.response, null, 2));
     } catch (error) {
       console.error("Error fetching AI response:", error);
       setAiResponse("Failed to get AI response. Please try again.");
